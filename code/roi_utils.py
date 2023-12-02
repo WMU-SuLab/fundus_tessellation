@@ -186,7 +186,7 @@ def create_circular_mask(h, w, center=None, radius=None):
 
 def get_grade1_cut(img, f_p):  # cut original image to grade1 roi
     h, w = img.shape[:2]
-    r0 = h / 25.4
+    r0 = 100 / 25.4
     r = r0 * 6
     image_part = img.copy()
     cv2.circle(image_part, (int(f_p[0]), int(f_p[1])), int(r), (0, 0, 0), thickness=-1)
@@ -196,7 +196,7 @@ def get_grade1_cut(img, f_p):  # cut original image to grade1 roi
 
 def get_grade2_cut(img, f_p):  # cut original image to grade2 roi
     h, w = img.shape[:2]
-    r0 = h / 25.4
+    r0 = 100 / 25.4
     r1 = r0 * 3
     r2 = r0 * 6
     image_part = img.copy()
@@ -211,7 +211,7 @@ def get_grade2_cut(img, f_p):  # cut original image to grade2 roi
 
 def get_grade3_cut(img, f_p):  # cut original image to grade3 roi
     h, w = img.shape[:2]
-    r0 = h / 25.4
+    r0 = 100 / 25.4
     r1 = r0 * 3
     image_part = img.copy()
     cv2.circle(image_part, (int(f_p[0]), int(f_p[1])), int(r0), (0, 0, 0), thickness=-1)
@@ -225,7 +225,7 @@ def get_grade3_cut(img, f_p):  # cut original image to grade3 roi
 
 def get_grade4_cut(img, f_p):  # cut original image to grade4 roi
     h, w = img.shape[:2]
-    r0 = h / 25.4
+    r0 = 100 / 25.4
     image_part = img.copy()
     center = (int(f_p[0]), int(f_p[1]))
     mask = create_circular_mask(h, w, center=center, radius=r0)
