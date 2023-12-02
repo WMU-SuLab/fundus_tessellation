@@ -21,7 +21,7 @@ fd_model.to(device)
 # fd_seg model
 seg_model = SwinUnet(num_classes=2)
 seg_model.load_state_dict(
-    torch.load('../weight/seg_ft_best_weight.pth',
+    torch.load('../weights/seg_ft_best_weight.pth',
                map_location=device))
 
 # roi classifier model

@@ -27,7 +27,7 @@ def main():
 
     grade = 'grade1'
     image_path = f'../data/fivepart-train/{grade}'
-    pretrained_weight = '../weight/convnext_tiny_1k_224_ema.pth'
+    pretrained_weight = '../weights/convnext_tiny_1k_224_ema.pth'
     weight_path = f"../weight/{grade}_{start_time}.pth"
     csv_path = f'../result/{grade}_{start_time}.csv'
     log = []
@@ -100,9 +100,9 @@ def main():
     elif pretrained_weight != "":
         assert os.path.exists(pretrained_weight), "weights file: '{}' not exist.".format(pretrained_weight)
         model.load_state_dict(torch.load(pretrained_weight, map_location=device))
-        print("Loaded weight pretrained in our data!")
+        print("Loaded weights pretrained in our data!")
     else:
-        print("SORRY!   No pretrained weight!!")
+        print("SORRY!   No pretrained weights!!")
 
     if freeze_layers == True:
         for name, para in model.named_parameters():
@@ -138,7 +138,7 @@ def main():
         lr_scheduler.step()
 
         log.append([epoch, train_loss, val_loss, train_acc, val_acc])
-        if val_acc > best_acc:  # acc improve save weight
+        if val_acc > best_acc:  # acc improve save weights
             best_acc = val_acc
             torch.save(model.state_dict(), weight_path)
             last_decrease = total_batch
